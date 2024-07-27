@@ -2,11 +2,10 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import fetchWeatherData from '../../utils/fetchWeatherData';
 import mongoose from 'mongoose';
 import WeatherSummary from '../../models/WeatherSummary';
-import { NextApiResponseServerIo } from '@/types';
 
 const cities = ['Delhi', 'Mumbai', 'Chennai', 'Bangalore', 'Kolkata', 'Hyderabad'];
 
-const handler = async (req: NextApiRequest, res: NextApiResponseServerIo) => {
+const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const { city } = req.query;
 
   if (!city || !cities.includes(city as string)) {
