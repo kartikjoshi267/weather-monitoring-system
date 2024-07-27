@@ -1,6 +1,17 @@
-import "@/styles/globals.css";
-import type { AppProps } from "next/app";
 
-export default function App({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />;
+import { AppProps } from 'next/app';
+import { PreferencesProvider } from '../context/PreferencesContext';
+import '../styles/globals.css'; 
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/ReactToastify.css';
+
+function MyApp({ Component, pageProps }: AppProps) {
+  return (
+    <PreferencesProvider>
+      <Component {...pageProps} />
+      <ToastContainer />
+    </PreferencesProvider>
+  );
 }
+
+export default MyApp;
